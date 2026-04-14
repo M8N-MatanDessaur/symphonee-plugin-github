@@ -32,3 +32,32 @@ During the Phase 2 extraction the implementations still live in `dashboard/serve
 ## Configuration
 
 Reads `GitHubPAT` from the global app config (same key the core settings modal writes today). When the config pane moves into this plugin it will continue to write to the same key so existing installs need no migration.
+
+## Workflow rules (owned by this plugin)
+
+### Creating pull requests
+
+Use the built-in script to create PRs on GitHub. NEVER use the `gh` CLI.
+
+```bash
+# Bash: push + create PR in one shot (auto-detects branch, generates title)
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "./dashboard/plugins/github/scripts/Push-AndPR.ps1 -Repo 'MyRepo'"
+
+# With a custom title and target branch
+powershell.exe -ExecutionPolicy Bypass -NoProfile -Command "./dashboard/plugins/github/scripts/Push-AndPR.ps1 -Repo 'MyRepo' -Title 'Add feature X' -Description 'Details' -TargetBranch 'develop'"
+```
+
+`New-PullRequest.ps1` gives finer-grained control over title, description, and target branch.
+
+If the Azure DevOps plugin is also installed, `AB#<id>` references in commit messages and branch names auto-link the PR to the matching work item -- that crosswalk is documented in the Azure DevOps plugin.
+
+### Plugin scripts
+
+Under `./dashboard/plugins/github/scripts/`:
+
+| Script | Purpose |
+|---|---|
+| `Push-AndPR.ps1 -Repo '<name>'` | Push + open a PR in one shot |
+| `New-PullRequest.ps1 -Repo '<name>' -Title '...' -Description '...'` | PR with custom body |
+
+Call with `powershell.exe -ExecutionPolicy Bypass -NoProfile -File "./dashboard/plugins/github/scripts/<Name>.ps1"` from bash.
