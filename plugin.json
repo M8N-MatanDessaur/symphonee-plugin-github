@@ -1,7 +1,7 @@
 {
   "id": "github",
   "name": "GitHub",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "sdkVersion": 2,
   "description": "GitHub integration: repositories, pull requests, reviews, cloning, git log",
   "icon": "github",
@@ -17,6 +17,12 @@
     "nativeSettings": {
       "targetId": "settingsSection-github"
     },
+    "nativeTabs": [
+      { "tabBtnId": "prsTabBtn", "panelId": "panel-prs", "openable": true }
+    ],
+    "nativeRightTabs": [
+      { "tabBtnId": "intelTab-gitlog", "panelId": "ipanel-gitlog" }
+    ],
     "repoSources": [
       {
         "id": "github",
