@@ -1,7 +1,7 @@
 {
   "id": "github",
   "name": "GitHub",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "sdkVersion": 2,
   "description": "GitHub integration: repositories, pull requests, reviews, cloning, git log",
   "icon": "github",
@@ -43,14 +43,6 @@
         "openable": true
       }
     ],
-    "rightTabs": [
-      {
-        "id": "gitlog",
-        "label": "Git Log",
-        "icon": "git-commit",
-        "html": "ui/gitlog.html"
-      }
-    ],
     "repoSources": [
       {
         "id": "github",
@@ -79,6 +71,12 @@
       "commentRoute": "/api/github/pulls/comment",
       "reviewRoute": "/api/github/pulls/review",
       "createRoute": "/api/pull-request"
-    }
+    },
+    "legacyNativeRightTabs": [
+      {
+        "tabBtnId": "intelTab-gitlog",
+        "panelId": "ipanel-gitlog"
+      }
+    ]
   }
 }
