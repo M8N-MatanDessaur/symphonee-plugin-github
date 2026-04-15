@@ -1,17 +1,29 @@
 {
   "id": "github",
   "name": "GitHub",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "sdkVersion": 2,
   "description": "GitHub integration: repositories, pull requests, reviews, cloning, git log",
   "icon": "github",
   "tint": "110, 125, 170",
   "instructions": "instructions.md",
   "aiKeywords": [
-    "github", "git hub", "gh", "pull request", "pr", "code review",
-    "clone repo", "clone from github", "github repo", "github repos"
+    "github",
+    "git hub",
+    "gh",
+    "pull request",
+    "pr",
+    "code review",
+    "clone repo",
+    "clone from github",
+    "github repo",
+    "github repos"
   ],
-  "activationConditions": { "configKeys": ["GitHubPAT"] },
+  "activationConditions": {
+    "configKeys": [
+      "GitHubPAT"
+    ]
+  },
   "settings": [],
   "contributions": {
     "routes": "routes.js",
@@ -19,10 +31,17 @@
       "targetId": "settingsSection-github"
     },
     "nativeTabs": [
-      { "tabBtnId": "prsTabBtn", "panelId": "panel-prs", "openable": true }
+      {
+        "tabBtnId": "prsTabBtn",
+        "panelId": "panel-prs",
+        "openable": true
+      }
     ],
     "nativeRightTabs": [
-      { "tabBtnId": "intelTab-gitlog", "panelId": "ipanel-gitlog" }
+      {
+        "tabBtnId": "intelTab-gitlog",
+        "panelId": "ipanel-gitlog"
+      }
     ],
     "repoSources": [
       {
@@ -52,6 +71,16 @@
       "commentRoute": "/api/github/pulls/comment",
       "reviewRoute": "/api/github/pulls/review",
       "createRoute": "/api/pull-request"
-    }
+    },
+    "sensitiveKeys": [
+      "GitHubPAT"
+    ],
+    "imageAuth": [
+      {
+        "hostnamePattern": "github.com",
+        "authType": "token",
+        "authConfigKey": "GitHubPAT"
+      }
+    ]
   }
 }
