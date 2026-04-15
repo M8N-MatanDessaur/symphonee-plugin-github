@@ -1,7 +1,7 @@
 {
   "id": "github",
   "name": "GitHub",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "sdkVersion": 2,
   "description": "GitHub integration: repositories, pull requests, reviews, cloning, git log",
   "icon": "github",
@@ -27,20 +27,28 @@
   "settings": [],
   "contributions": {
     "routes": "routes.js",
+    "configKeys": [
+      "GitHubPAT"
+    ],
+    "sensitiveKeys": [
+      "GitHubPAT"
+    ],
     "nativeSettings": {
       "targetId": "settingsSection-github"
     },
-    "nativeTabs": [
+    "legacyNativeTabs": [
       {
         "tabBtnId": "prsTabBtn",
         "panelId": "panel-prs",
         "openable": true
       }
     ],
-    "nativeRightTabs": [
+    "rightTabs": [
       {
-        "tabBtnId": "intelTab-gitlog",
-        "panelId": "ipanel-gitlog"
+        "id": "gitlog",
+        "label": "Git Log",
+        "icon": "git-commit",
+        "html": "ui/gitlog.html"
       }
     ],
     "repoSources": [
@@ -71,16 +79,6 @@
       "commentRoute": "/api/github/pulls/comment",
       "reviewRoute": "/api/github/pulls/review",
       "createRoute": "/api/pull-request"
-    },
-    "sensitiveKeys": [
-      "GitHubPAT"
-    ],
-    "imageAuth": [
-      {
-        "hostnamePattern": "github.com",
-        "authType": "token",
-        "authConfigKey": "GitHubPAT"
-      }
-    ]
+    }
   }
 }

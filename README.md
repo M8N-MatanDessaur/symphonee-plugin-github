@@ -17,11 +17,11 @@ Integrates GitHub into DevOps Pilot: pull requests, reviews, cloning, and the gi
 - `repoSources` -- adds "Clone from GitHub" to the repos modal.
 - `commitLinkers` -- turns `#123` in commit messages into a link to the PR.
 - `centerTabs: Pull Requests` and `rightTabs: Git Log`.
-- `nativeSettings` -- claims the GitHub PAT field so it lives under this plugin.
+- `configKeys` / `sensitiveKeys` -- keep GitHub config in this plugin's `config.json` and scrub PATs from exports.
 
 ## Routes
 
-During the Phase 2 extraction the HTTP handlers still live in core DevOps Pilot under `/api/github/*` and `/api/pull-request`. The manifest points at those absolute paths. A future release will move the handlers into this plugin's `routes.js`.
+The HTTP handlers live in this plugin's `routes.js`. Legacy `/api/github/*` and `/api/pull-request` paths are still registered so older UI code and scripts keep working.
 
 ## Uninstall
 
